@@ -27,7 +27,7 @@ This is a Node.js API project written in TypeScript. It provides a RESTful API f
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone
+   git clone https://github.com/franklinpaulino04/api-node-ts.git
     cd api-node-ts
     ```
 2. Install dependencies:
