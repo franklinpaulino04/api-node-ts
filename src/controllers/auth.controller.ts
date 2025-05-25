@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { AuthService } from '../services/auth.service';
-import {toDTO} from "../utils/transform-response";
-import {UserResponseDTO} from "../schemas/user.dto";
+import { toDTO } from "../utils/transform-response";
+import { userResponseDTO } from "../schemas/user.schema";
 
 export class AuthController {
 
@@ -16,7 +16,7 @@ export class AuthController {
             res.status(201).json({
                 success: true,
                 message: 'User registered successfully',
-                data: toDTO(UserResponseDTO, user),
+                data: toDTO(userResponseDTO, user),
             });
         } catch (e) {
             res.status(400).json({ success: false, message: 'Registration failed' });
@@ -30,11 +30,11 @@ export class AuthController {
      */
     static async login(req: Request, res: Response) {
         try {
-            const data = await AuthService.login(req.body.email, req.body.password);
+            const data = await AuthService.login(req.body);
             res.json({
                 success: true,
                 message: 'Login successful',
-                data: toDTO(UserResponseDTO, data.user),
+                data: toDTO(userResponseDTO, data.user),
                 accessToken: data.token,
             });
         } catch (e) {

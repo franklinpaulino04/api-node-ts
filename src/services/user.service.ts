@@ -1,6 +1,7 @@
 import { AppDataSource } from '../data-source';
 import { User } from '../entities/user.entity';
 import {IsNull} from "typeorm";
+import {CreateUserDto, UpdateUserDto} from "../schemas/user.schema";
 
 class UserServiceClass {
     private repo = AppDataSource.getRepository(User);
@@ -32,10 +33,10 @@ class UserServiceClass {
     }
 
     /**
-     * Find a user by email
-     * @param email
+     * Create a new user
+     * @param data
      */
-    create(data: Partial<User>) {
+    create(data: CreateUserDto) {
         const user = this.repo.create(data);
         return this.repo.save(user);
     }
@@ -45,7 +46,7 @@ class UserServiceClass {
      * @param id
      * @param data
      */
-    update(id: number, data: Partial<User>) {
+    update(id: number, data: UpdateUserDto) {
         return this.repo.update(id, data);
     }
 
