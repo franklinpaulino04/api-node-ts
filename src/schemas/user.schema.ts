@@ -17,7 +17,7 @@ export type CreateUserDto = z.infer<typeof createUserDto>;
 export type UpdateUserDto = z.infer<typeof updateUserDto>;
 
 /**
- * User Response DTO
+ * User Response DTO Schema
  */
 
 export const userResponseDTO = z.object({
