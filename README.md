@@ -36,13 +36,13 @@ This is a Node.js API project written in TypeScript. It provides a RESTful API f
    ```
 4. Create a `.env` file in the root directory and add your environment variables:
    ```bash
-    NODE_ENV=development
-    PORT=3000
-    DB_HOST
-    DB_USER=root
-    DB_PASSWORD=yourpassword
-    DB_NAME=yourdbname
-    JWT_SECRET=yourjwtsecret
+    NODE_ENV="development"
+    DB_HOST="localhost"
+    DB_PORT="3306"
+    DB_USERNAME="root"
+    DB_PASSWORD="password"
+    DB_NAME="api_node_ts"
+    JWT_SECRET="your_jwt_secret"
     ```
 5. Create a MySQL database and update the `.env` file with your database credentials.
 6. Run the following command to create the database:
