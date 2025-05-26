@@ -3,8 +3,8 @@ import jwt from 'jsonwebtoken';
 import { AppDataSource } from '../data-source';
 import { User } from '../entities/user.entity';
 import {IsNull} from "typeorm";
-import {LoginDto} from "../schemas/login.dto";
-import {CreateUserDto} from "../schemas/user.schema";
+import {loginDto} from "../schemas/login.dto";
+import {createUserDto} from "../schemas/user.schema";
 
 const repo = AppDataSource.getRepository(User);
 
@@ -14,7 +14,7 @@ export class AuthService {
      * Register a new user
      * @param data
      */
-    static async register(data: CreateUserDto) {
+    static async register(data: createUserDto) {
         const hashed = await bcrypt.hash(data.password, 10);
         const user = repo.create({ ...data, password: hashed, role: data.role || 'user' });
         return repo.save(user);
@@ -24,7 +24,7 @@ export class AuthService {
      * Login a user
      * @param data
      */
-    static async login(data: LoginDto) {
+    static async login(data: loginDto) {
         const { email, password } = data;
         const user = await repo.findOneBy({ email, deletedAt: IsNull(), isActive: true });
 

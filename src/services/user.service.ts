@@ -1,7 +1,7 @@
 import { AppDataSource } from '../data-source';
 import { User } from '../entities/user.entity';
-import {IsNull} from "typeorm";
-import {CreateUserDto, UpdateUserDto} from "../schemas/user.schema";
+import { IsNull } from "typeorm";
+import { createUserDto, updateUserDto } from "../schemas/user.schema";
 
 class UserServiceClass {
     private repo = AppDataSource.getRepository(User);
@@ -36,7 +36,7 @@ class UserServiceClass {
      * Create a new user
      * @param data
      */
-    create(data: CreateUserDto) {
+    create(data: createUserDto) {
         const user = this.repo.create({ ...data, createdAt: new Date(), updatedAt: new Date() });
         return this.repo.save(user);
     }
@@ -46,7 +46,7 @@ class UserServiceClass {
      * @param id
      * @param data
      */
-    update(id: number, data: UpdateUserDto) {
+    update(id: number, data: updateUserDto) {
         return this.repo.update(id, { ...data, createdAt: new Date(), updatedAt: new Date() });
     }
 
