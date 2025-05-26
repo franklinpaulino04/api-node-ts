@@ -37,7 +37,7 @@ class UserServiceClass {
      * @param data
      */
     create(data: CreateUserDto) {
-        const user = this.repo.create(data);
+        const user = this.repo.create({ ...data, createdAt: new Date(), updatedAt: new Date() });
         return this.repo.save(user);
     }
 
@@ -47,7 +47,7 @@ class UserServiceClass {
      * @param data
      */
     update(id: number, data: UpdateUserDto) {
-        return this.repo.update(id, data);
+        return this.repo.update(id, { ...data, createdAt: new Date(), updatedAt: new Date() });
     }
 
     /**
